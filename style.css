@@ -92,8 +92,10 @@ span{
 }
 
 .about-col-1 img{
-    width: 100%;
+    width: 95%;
     border-radius: 15px;
+    margin-left: 60px;
+    height: 98%;
 }
 .about-col-2{
     flex-basis: 45%;
