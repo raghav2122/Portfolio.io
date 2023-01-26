@@ -13,11 +13,11 @@
             <nav>
                 <img src="logo1.png" class="logo">
                 <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Services</a></li>
-                    <li><a href="#">Portfolio</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li><a href="#header">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
             <div class="header-text">
@@ -31,11 +31,11 @@
         <div class="container">
             <div class="row">
                 <div class="about-col-1">
-                    <img src="About.jpg">
+                    <img src="About.jpg" >
                 </div>
                 <div class="about-col-2">
                     <h1 class="subtitle">About Me</h1>
-                    <p>I’m a sophomore pursuing Dual degrees in Biological Sciences and Manufacturing engineering at BITS Pilani. I’m highly interested in Web Development and Cybersecurity. I have been working on various web development projects using modern technologies such as HTML, CSS, JavaScript and frameworks such as React.js and Angular.js. I have also taken online courses on cybersecurity and have a strong understanding of network security and penetration testing. I am always eager to learn new technologies and improve my skills in these areas. My goal for this year is to become a full-stack developer and work on projects that can make a positive impact on the society.</p>
+                    <p class="bio" >I’m a sophomore pursuing Dual degrees in Biological Sciences and Manufacturing engineering at BITS Pilani. I’m highly interested in Web Development and Cybersecurity. I have been working on various web development projects using modern technologies such as HTML, CSS, JavaScript and frameworks such as React.js and Angular.js. I have also taken online courses on cybersecurity and have a strong understanding of network security and penetration testing. I am always eager to learn new technologies and improve my skills in these areas. My goal for this year is to become a full-stack developer and work on projects that can make a positive impact on the society.</p>
                     <div class="tab-titles">
                         <p class="tab-links active-link" onclick="opentab('skills')">Skills</p>
                         <p class="tab-links" onclick="opentab('experience')">Experience</p>
@@ -148,7 +148,7 @@
                 <a href="Raghav's_Resume.pdf" download class="btn btn2" >Download Resume</a>
             </div>
             <div class="contact-right">
-                <form>
+                <form name="submit-to-google-sheet">
                     <input type="text" name="Name" placeholder="Your Name" required>
                     <input type="email" name="Email" placeholder="Your Email" required>
                     <textarea name="Message" rows="6" placeholder="Your Message"></textarea>
@@ -173,5 +173,21 @@
             document.getElementById(tabname).classList.add("active-tab") ;
         }
     </script>
+    <form name="submit-to-google-sheet">
+        <input name="email" type="email" placeholder="Email" required>
+        <button type="submit">Send</button>
+      </form>
+      
+      <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbzgRL6uglKFMxtz6rlZYxXn0GbNUda0MstiblQHxyk0W9rgCr6_VfkRiY-42_nHJu2A9g/exec'
+        const form = document.forms['submit-to-google-sheet']
+      
+        form.addEventListener('submit', e => {
+          e.preventDefault()
+          fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => console.log('Success!', response))
+            .catch(error => console.error('Error!', error.message))
+        })
+      </script>
 </body>
 </html>
