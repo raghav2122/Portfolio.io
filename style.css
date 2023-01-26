@@ -4,6 +4,9 @@
     font-family: 'poppins',sans-serif;
     box-sizing: border-box;
 }
+html{
+    scroll-behavior: smooth;
+}
 body{
     background-image: url(2.png);
     color: #fff;
@@ -89,6 +92,10 @@ span{
 
 .about-col-1{
     flex-basis: 35%;
+}
+.bio{
+    font-size: 16px;
+    font-weight: 400;
 }
 
 .about-col-1 img{
