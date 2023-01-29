@@ -32,13 +32,6 @@ nav{
     justify-content: space-between;
     flex-wrap: wrap;
 }
-.logo{
-    align-self: center;
-    max-width: 80px;
-    margin-top: 20px;
-    margin-left: 10px;
-    height: auto;
-}
 nav ul li{
     top:0px;
   list-style:none;
