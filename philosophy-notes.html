@@ -270,13 +270,75 @@
     margin: 2rem 0;
   }
 
-  @media (max-width: 600px) {
-    .header { padding: 2rem 1rem; }
-    .header h1 { font-size: 1.4rem; }
-    .content { padding: 0 1rem 4rem; }
-    .toc-grid { grid-template-columns: 1fr; }
+  /* Tables scroll horizontally on small screens */
+  .table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin: 1rem 0 1.5rem;
+  }
+
+  .table-wrap table {
+    margin: 0;
+    min-width: 480px;
+  }
+
+  @media (max-width: 768px) {
+    body { font-size: 16px; }
+
+    .header {
+      padding: 1.5rem 1rem;
+      position: sticky;
+    }
+
+    .header h1 { font-size: 1.3rem; }
+    .header .subtitle { font-size: 0.82rem; }
+
+    .toc {
+      margin: 1rem 0.75rem;
+      padding: 1rem 1.2rem;
+    }
+
+    .toc-grid { grid-template-columns: 1fr; gap: 0.25rem; }
+    .toc a { padding: 0.5rem 0.8rem; font-size: 0.85rem; }
+
+    .content { padding: 0 0.9rem 4rem; }
+
+    .module-header {
+      font-size: 1.2rem;
+      padding: 0.8rem 1rem;
+    }
+
+    h3 { font-size: 1.08rem; margin-top: 1.5rem; }
+    h4 { font-size: 0.95rem; }
+
+    .key-concept, .definition, .criticism, .exam-tip {
+      padding: 0.7rem 0.8rem;
+      margin: 0.8rem 0;
+    }
+
     table { font-size: 0.82rem; }
     td, thead th { padding: 0.4rem 0.5rem; }
+
+    .question-card { padding: 0.8rem 1rem; }
+    .question-card .q-text { font-size: 0.92rem; }
+
+    ol, ul { margin-left: 1.2rem; }
+  }
+
+  @media (max-width: 400px) {
+    body { font-size: 15px; line-height: 1.6; }
+
+    .header { padding: 1.2rem 0.8rem; }
+    .header h1 { font-size: 1.15rem; }
+
+    .content { padding: 0 0.7rem 3rem; }
+
+    .module-header { font-size: 1.1rem; padding: 0.7rem 0.8rem; }
+
+    h3 { font-size: 1rem; }
+
+    table { font-size: 0.78rem; }
+    td, thead th { padding: 0.3rem 0.4rem; }
   }
 
   @media print {
@@ -446,7 +508,7 @@
 
 <h4>The Four Cardinal Virtues</h4>
 
-<table>
+<div class="table-wrap"><table>
   <thead><tr><th>Virtue</th><th>When?</th></tr></thead>
   <tbody>
     <tr><td><strong>Wisdom</strong></td><td>The rational part rules properly</td></tr>
@@ -454,20 +516,20 @@
     <tr><td><strong>Temperance</strong></td><td>Harmony; appetites are controlled by reason</td></tr>
     <tr><td><strong>Justice</strong></td><td>Each part doing its own work properly</td></tr>
   </tbody>
-</table>
+</table></div>
 
 <p>The ethical ideal is a <strong>well-ordered soul</strong>. A life of reason/virtue is the highest good. The just man is the happy man.</p>
 
 <h4>The State (mirrors the soul)</h4>
 
-<table>
+<div class="table-wrap"><table>
   <thead><tr><th>Class</th><th>Soul Element</th><th>Function</th><th>Virtue</th></tr></thead>
   <tbody>
     <tr><td>Philosopher-Kings</td><td>Rational</td><td>Governance</td><td>Wisdom</td></tr>
     <tr><td>Warriors/Guardians</td><td>Spirited</td><td>Defense</td><td>Courage</td></tr>
     <tr><td>Artisans/Merchants/Farmers</td><td>Appetitive</td><td>Production</td><td>Temperance</td></tr>
   </tbody>
-</table>
+</table></div>
 
 <p><strong>Justice in the state</strong> = each class doing its own work. The state is an educational institution; its foundation must be in philosophy. If all men were rational and virtuous, there would be no need for the state.</p>
 
@@ -501,7 +563,7 @@
 
 <h4>The Four Causes</h4>
 
-<table>
+<div class="table-wrap"><table>
   <thead><tr><th>Cause</th><th>Question</th><th>Example (Making a Pot)</th></tr></thead>
   <tbody>
     <tr><td><strong>Material</strong></td><td>What is it made of?</td><td>Clay</td></tr>
@@ -509,7 +571,7 @@
     <tr><td><strong>Efficient</strong></td><td>By what is it made?</td><td>The potter</td></tr>
     <tr><td><strong>Final</strong></td><td>For what purpose?</td><td>To store/cool water</td></tr>
   </tbody>
-</table>
+</table></div>
 
 <p>All four operate simultaneously. The <strong>final cause</strong> (purpose) is the most important &mdash; it explains WHY something exists.</p>
 
@@ -544,14 +606,14 @@
 
 <h4>Substance, Attributes, and Modes</h4>
 
-<table>
+<div class="table-wrap"><table>
   <thead><tr><th>Substance</th><th>Attribute (Essential Property)</th><th>Modes (Variations)</th></tr></thead>
   <tbody>
     <tr><td><strong>God</strong></td><td>Substance in the absolute sense</td><td>&mdash;</td></tr>
     <tr><td><strong>Mind</strong> (Res Cogitans)</td><td>Thought</td><td>Imagination, will, perception</td></tr>
     <tr><td><strong>Body</strong> (Res Extensa)</td><td>Extension</td><td>Figure, motion</td></tr>
   </tbody>
-</table>
+</table></div>
 
 <p>Mind and body are <strong>distinct</strong> &mdash; their attributes are completely different. Body is extended but passive; mind is active and free. Mind has no extension; no body can think. We CAN conceive extension without figure, and thought without imagination &mdash; so extension and thought are the essential attributes.</p>
 
@@ -587,7 +649,7 @@
 
 <h4>Descartes vs Spinoza</h4>
 
-<table>
+<div class="table-wrap"><table>
   <thead><tr><th></th><th>Descartes</th><th>Spinoza</th></tr></thead>
   <tbody>
     <tr><td><strong>Substances</strong></td><td>Three: God, Mind, Body</td><td>One: God/Nature</td></tr>
@@ -596,7 +658,7 @@
     <tr><td><strong>God</strong></td><td>Creator, separate from creation</td><td>God IS Nature (pantheism)</td></tr>
     <tr><td><strong>Problem solved?</strong></td><td>No &mdash; can&rsquo;t explain interaction</td><td>Avoids the problem entirely</td></tr>
   </tbody>
-</table>
+</table></div>
 
 </section>
 
@@ -620,14 +682,14 @@
 
 <h4>Primary and Secondary Qualities</h4>
 
-<table>
+<div class="table-wrap"><table>
   <thead><tr><th>Primary Qualities</th><th>Secondary Qualities</th></tr></thead>
   <tbody>
     <tr><td>Actually IN the object, inseparable</td><td>NOT in the object; produced in us</td></tr>
     <tr><td>Solidity, Extension, Figure, Motion, Number</td><td>Color, Sound, Taste, Smell, Temperature</td></tr>
     <tr><td>Our ideas RESEMBLE the qualities</td><td>Our ideas do NOT resemble anything in the object</td></tr>
   </tbody>
-</table>
+</table></div>
 
 <p>Locke: We have direct knowledge of our own ideas, demonstrative knowledge of God/morality, and practical knowledge of the external world. The mind can form <strong>abstract ideas</strong> by separating common features from particular instances.</p>
 
@@ -677,7 +739,7 @@
 
 <h4>Two Kinds of Knowledge</h4>
 
-<table>
+<div class="table-wrap"><table>
   <thead><tr><th>Relations of Ideas</th><th>Matters of Fact</th></tr></thead>
   <tbody>
     <tr><td>Math, geometry, logic</td><td>Everything else</td></tr>
@@ -685,7 +747,7 @@
     <tr><td>Denial involves contradiction</td><td>Denial involves NO contradiction</td></tr>
     <tr><td>&ldquo;3 &times; 5 = 15&rdquo;</td><td>&ldquo;The sun will rise tomorrow&rdquo;</td></tr>
   </tbody>
-</table>
+</table></div>
 
 <h4>Denial of Causality</h4>
 
@@ -829,7 +891,7 @@
 
 <h4>Bentham vs Mill</h4>
 
-<table>
+<div class="table-wrap"><table>
   <thead><tr><th></th><th>Bentham</th><th>Mill</th></tr></thead>
   <tbody>
     <tr><td><strong>Pleasure</strong></td><td>Quantitative only</td><td>Qualitative + quantitative</td></tr>
@@ -840,11 +902,11 @@
     <tr><td><strong>Liberty</strong></td><td>Less emphasis</td><td>Central (Harm Principle)</td></tr>
     <tr><td><strong>Criticism</strong></td><td>&ldquo;Pig philosophy&rdquo;</td><td>Elitist? Who decides &ldquo;higher&rdquo;?</td></tr>
   </tbody>
-</table>
+</table></div>
 
 <h4>Kant vs Utilitarians</h4>
 
-<table>
+<div class="table-wrap"><table>
   <thead><tr><th></th><th>Kant</th><th>Bentham/Mill</th></tr></thead>
   <tbody>
     <tr><td><strong>What makes action right?</strong></td><td>Duty / intention</td><td>Consequences / happiness</td></tr>
@@ -853,7 +915,7 @@
     <tr><td><strong>Exceptions?</strong></td><td>Never</td><td>Yes, for greater happiness</td></tr>
     <tr><td><strong>Persons</strong></td><td>Always ends, never merely means</td><td>Can sacrifice one for many</td></tr>
   </tbody>
-</table>
+</table></div>
 
 </section>
 
@@ -877,14 +939,14 @@
 
 <h4>Three Stages of Existence</h4>
 
-<table>
+<div class="table-wrap"><table>
   <thead><tr><th>Stage</th><th>Mode of Living</th><th>Model</th><th>Outcome</th></tr></thead>
   <tbody>
     <tr><td><strong>Aesthetic</strong></td><td>Living for pleasure, sensation, novelty, the moment</td><td>Don Juan</td><td>Boredom, emptiness, DESPAIR</td></tr>
     <tr><td><strong>Ethical</strong></td><td>Duty, moral commitment, responsibility, consistency</td><td>The married person</td><td>Can become rigid; can&rsquo;t address deepest questions</td></tr>
     <tr><td><strong>Religious</strong></td><td>Personal, passionate relationship with God; beyond ethics</td><td>Abraham (sacrifice of Isaac)</td><td>&ldquo;Teleological suspension of the ethical&rdquo;</td></tr>
   </tbody>
-</table>
+</table></div>
 
 <p>Each transition requires a <strong>leap</strong> &mdash; not rational progression but a decisive, passionate choice. You cannot reason your way between stages.</p>
 
@@ -961,14 +1023,14 @@
 
 <h4>Being-in-itself vs Being-for-itself</h4>
 
-<table>
+<div class="table-wrap"><table>
   <thead><tr><th>Being-in-itself (en-soi)</th><th>Being-for-itself (pour-soi)</th></tr></thead>
   <tbody>
     <tr><td>Mode of being of THINGS (rocks, tables)</td><td>Mode of being of CONSCIOUSNESS (humans)</td></tr>
     <tr><td>Simply IS. No freedom, no possibility.</td><td>Always aware, free, becoming.</td></tr>
     <tr><td>Complete, solid, self-identical.</td><td>Defined by what it is NOT. Contains nothingness.</td></tr>
   </tbody>
-</table>
+</table></div>
 
 <h3>6.4 The Ethical Self in Existentialism</h3>
 
@@ -989,7 +1051,7 @@
 
 <h4>All Ethical Approaches Compared</h4>
 
-<table>
+<div class="table-wrap"><table>
   <thead><tr><th>Approach</th><th>What makes action right?</th><th>Key figure</th></tr></thead>
   <tbody>
     <tr><td>Virtue Ethics</td><td>Character / excellence of the soul</td><td>Plato, Aristotle</td></tr>
@@ -997,7 +1059,7 @@
     <tr><td>Utilitarian</td><td>Consequences (happiness)</td><td>Bentham, Mill</td></tr>
     <tr><td>Existentialist</td><td>Authentic, free, responsible choice</td><td>Kierkegaard, Sartre</td></tr>
   </tbody>
-</table>
+</table></div>
 
 </section>
 
@@ -1006,7 +1068,7 @@
 <div class="module-header">Key Comparisons</div>
 
 <h3>Plato vs Aristotle</h3>
-<table>
+<div class="table-wrap"><table>
   <thead><tr><th></th><th>Plato</th><th>Aristotle</th></tr></thead>
   <tbody>
     <tr><td><strong>Reality</strong></td><td>World of Forms (abstract, separate)</td><td>Individual substances (form + matter, inseparable)</td></tr>
@@ -1016,10 +1078,10 @@
     <tr><td><strong>Knowledge</strong></td><td>Reminiscence (soul remembers)</td><td>Abstraction from experience</td></tr>
     <tr><td><strong>God</strong></td><td>The Form of the Good</td><td>Unmoved Mover / Actus Purus</td></tr>
   </tbody>
-</table>
+</table></div>
 
 <h3>Descartes vs Spinoza</h3>
-<table>
+<div class="table-wrap"><table>
   <thead><tr><th></th><th>Descartes</th><th>Spinoza</th></tr></thead>
   <tbody>
     <tr><td><strong>Substances</strong></td><td>Three: God, Mind, Body</td><td>One: God/Nature</td></tr>
@@ -1027,10 +1089,10 @@
     <tr><td><strong>God</strong></td><td>Creator, separate from creation</td><td>God IS Nature (pantheism)</td></tr>
     <tr><td><strong>Dualism</strong></td><td>Substance dualism</td><td>Attribute dualism only</td></tr>
   </tbody>
-</table>
+</table></div>
 
 <h3>Berkeley vs Hume</h3>
-<table>
+<div class="table-wrap"><table>
   <thead><tr><th></th><th>Berkeley</th><th>Hume</th></tr></thead>
   <tbody>
     <tr><td><strong>What exists?</strong></td><td>Minds + ideas + God</td><td>Only impressions and ideas</td></tr>
@@ -1040,10 +1102,10 @@
     <tr><td><strong>Key move</strong></td><td>Rejects abstract ideas</td><td>Denies causality</td></tr>
     <tr><td><strong>Position</strong></td><td>Subjective Idealist</td><td>Skeptic</td></tr>
   </tbody>
-</table>
+</table></div>
 
 <h3>Bentham vs Mill</h3>
-<table>
+<div class="table-wrap"><table>
   <thead><tr><th></th><th>Bentham</th><th>Mill</th></tr></thead>
   <tbody>
     <tr><td><strong>Pleasure</strong></td><td>Quantitative only</td><td>Qualitative + quantitative</td></tr>
@@ -1052,7 +1114,7 @@
     <tr><td><strong>Type</strong></td><td>Act utilitarianism</td><td>Rule utilitarianism</td></tr>
     <tr><td><strong>Criticism</strong></td><td>&ldquo;Pig philosophy&rdquo;</td><td>Elitist?</td></tr>
   </tbody>
-</table>
+</table></div>
 
 </section>
 
