@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HSS F235 — Mid-Sem Notes</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:ital,wght@0,400;0,600;1,400&display=swap');
+
+  :root {
+    --bg: #faf9f6;
+    --text: #1a1a1a;
+    --muted: #555;
+    --accent: #2d5a27;
+    --accent-light: #e8f0e6;
+    --border: #ddd;
+    --highlight: #fff9db;
+    --card-bg: #fff;
+    --module-1: #4a6741;
+    --module-2: #8b5e3c;
+    --module-3: #4a5568;
+    --module-4: #6b46c1;
+    --module-5: #c53030;
+    --module-6: #2b6cb0;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Newsreader', Georgia, serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 17px;
+    padding: 0;
+  }
+
+  .header {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    color: white;
+    padding: 3rem 2rem;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.15);
+  }
+
+  .header h1 {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin-bottom: 0.3rem;
+  }
+
+  .header .subtitle {
+    font-size: 0.95rem;
+    opacity: 0.8;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+  }
+
+  .toc {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 1.5rem 2rem;
+    background: var(--card-bg);
+    border-radius: 12px;
+    border: 1px solid var(--border);
+  }
+
+  .toc h2 {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--muted);
+    margin-bottom: 1rem;
+  }
+
+  .toc-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+  }
+
+  .toc a {
+    display: block;
+    padding: 0.6rem 1rem;
+    color: var(--text);
+    text-decoration: none;
+    border-radius: 8px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.15s;
+  }
+
+  .toc a:hover { background: var(--accent-light); }
+  .toc a .mod-num { font-weight: 600; margin-right: 0.3rem; }
+
+  .content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 2rem 6rem;
+  }
+
+  .module {
+    margin-top: 3rem;
+    scroll-margin-top: 100px;
+  }
+
+  .module-header {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    padding: 1rem 1.2rem;
+    border-radius: 10px;
+    color: white;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.3px;
+  }
+
+  .m1 .module-header { background: var(--module-1); }
+  .m2 .module-header { background: var(--module-2); }
+  .m3 .module-header { background: var(--module-3); }
+  .m4 .module-header { background: var(--module-4); }
+  .m5 .module-header { background: var(--module-5); }
+  .m6 .module-header { background: var(--module-6); }
+
+  h3 {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text);
+    margin: 2rem 0 0.8rem;
+    padding-bottom: 0.3rem;
+    border-bottom: 2px solid var(--border);
+  }
+
+  h4 {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--muted);
+    margin: 1.5rem 0 0.5rem;
+  }
+
+  p { margin-bottom: 0.8rem; }
+
+  strong { font-weight: 600; }
+
+  .key-concept {
+    background: var(--highlight);
+    border-left: 4px solid #d4a900;
+    padding: 0.8rem 1rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+  }
+
+  .key-concept p:last-child { margin-bottom: 0; }
+
+  .definition {
+    background: #f0f4ff;
+    border-left: 4px solid #4a6fa5;
+    padding: 0.8rem 1rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+  }
+
+  .definition p:last-child { margin-bottom: 0; }
+
+  .criticism {
+    background: #fff5f5;
+    border-left: 4px solid #c53030;
+    padding: 0.8rem 1rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+  }
+
+  .criticism p:last-child { margin-bottom: 0; }
+
+  .exam-tip {
+    background: #f0fff4;
+    border: 2px dashed var(--accent);
+    padding: 0.8rem 1rem;
+    margin: 1rem 0;
+    border-radius: 8px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+  }
+
+  ul, ol {
+    margin: 0.5rem 0 1rem 1.5rem;
+  }
+
+  li { margin-bottom: 0.3rem; }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0 1.5rem;
+    font-size: 0.92rem;
+  }
+
+  thead th {
+    background: #f5f5f5;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    text-align: left;
+    padding: 0.6rem 0.8rem;
+    border-bottom: 2px solid var(--border);
+    font-size: 0.85rem;
+  }
+
+  td {
+    padding: 0.5rem 0.8rem;
+    border-bottom: 1px solid #eee;
+    vertical-align: top;
+  }
+
+  tr:hover td { background: #fafafa; }
+
+  .comparison-section {
+    margin-top: 3rem;
+    scroll-margin-top: 100px;
+  }
+
+  .comparison-section .module-header {
+    background: linear-gradient(135deg, #2d3748, #4a5568);
+  }
+
+  .predictions {
+    margin-top: 3rem;
+    scroll-margin-top: 100px;
+  }
+
+  .predictions .module-header {
+    background: linear-gradient(135deg, #9b2c2c, #c53030);
+  }
+
+  .question-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1rem 1.2rem;
+    margin: 0.8rem 0;
+  }
+
+  .question-card .q-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--muted);
+    margin-bottom: 0.3rem;
+  }
+
+  .question-card .q-text {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  .divider {
+    height: 1px;
+    background: var(--border);
+    margin: 2rem 0;
+  }
+
+  @media (max-width: 600px) {
+    .header { padding: 2rem 1rem; }
+    .header h1 { font-size: 1.4rem; }
+    .content { padding: 0 1rem 4rem; }
+    .toc-grid { grid-template-columns: 1fr; }
+    table { font-size: 0.82rem; }
+    td, thead th { padding: 0.4rem 0.5rem; }
+  }
+
+  @media print {
+    .header { position: static; }
+    .module { page-break-before: always; }
+    .module:first-child { page-break-before: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>HSS F235 &mdash; Introductory Philosophy</h1>
+  <div class="subtitle">Mid-Semester Notes &bull; Modules 1&ndash;6 (excl. 1.3) &bull; Closed Book &bull; 90 min</div>
+</div>
+
+<div class="content">
+
+<nav class="toc">
+  <h2>Contents</h2>
+  <div class="toc-grid">
+    <a href="#m1"><span class="mod-num">1</span> Nature of Philosophy</a>
+    <a href="#m2"><span class="mod-num">2</span> Greek Philosophy</a>
+    <a href="#m3"><span class="mod-num">3</span> Continental Rationalism</a>
+    <a href="#m4"><span class="mod-num">4</span> British Empiricism</a>
+    <a href="#m5"><span class="mod-num">5</span> Ethics</a>
+    <a href="#m6"><span class="mod-num">6</span> Existentialism</a>
+    <a href="#comparisons"><span class="mod-num">&harr;</span> Key Comparisons</a>
+    <a href="#predictions"><span class="mod-num">!</span> Predicted Questions</a>
+  </div>
+</nav>
+
+<!-- ==================== MODULE 1 ==================== -->
+<section class="module m1" id="m1">
+<div class="module-header">Module 1: Nature of Philosophy &amp; Traditional Divisions</div>
+
+<h3>1.1 What is Philosophy?</h3>
+
+<p>Philosophy is a <strong>critical and reflective inquiry</strong> into the fundamental laws and principles of everything. It seeks to know the essential nature of things &mdash; the Truth or Reality.</p>
+
+<p>The search for the <strong>stable and permanent</strong> as opposed to perpetual flux.</p>
+
+<p>A philosopher asks: Is reality only matter in continuous motion? Or is it also a mental process? Is it blind or purposive?</p>
+
+<h4>Key Defining Features</h4>
+
+<p><strong>1. Goes beyond common sense.</strong> Philosophy does not confine itself to ordinary, pre-reflective beliefs. Like science, it appeals to reason &mdash; but goes deeper. We all know what reality is in a physical sense. But philosophy asks &mdash; what IS reality at its core?</p>
+
+<p><strong>2. Searches for definitions and universals.</strong> When we examine what art is, the question isn&rsquo;t about knowing various divisions of art, but defining what art IS. An intellectual inquiry beyond multiplicities and diversities into essences or universals.</p>
+
+<p><strong>3. Normative character.</strong> In searching for what IS the case, philosophy moves into what SHOULD be the case. In defining man as a rational being, philosophy suggests how humans ought to be. In defining what education is, we want to see this ideal in our actual institutions.</p>
+
+<div class="definition">
+  <p><strong>Substance question:</strong> Is reality physical, spiritual, or both?</p>
+  <p><strong>Monism</strong> &mdash; one substance &bull; <strong>Dualism</strong> &mdash; two substances &bull; <strong>Pluralism</strong> &mdash; many substances</p>
+</div>
+
+<h3>1.2 Traditional Divisions of Philosophy</h3>
+
+<p><strong>Metaphysics:</strong> Appearance vs Reality &mdash; beyond the visible, there is a world of Ideas/Forms. Deals with the structure of reality: Matter, Space, Time.</p>
+
+<p><strong>Epistemology (Theory of Knowledge):</strong> Origin and process of knowledge. Criteria and limits of knowledge. Sources of knowledge &mdash; which are reliable, Senses or Reason? Faulty knowledge and theories of error.</p>
+
+<p><strong>Logic:</strong> Science of correct reasoning. Basis of all inquiries.</p>
+
+<p><strong>Ethics:</strong> Questions of good/bad, right/wrong. Not about prescriptions but knowing what &ldquo;good&rdquo; is. Three approaches: Deontological, Utilitarian, Virtue Ethics. Questions of justice and moral dilemma.</p>
+
+<p><strong>Philosophy of Religion:</strong> Existence of God and the proofs &mdash; Ontological (God&rsquo;s existence follows from the concept), Causal (everything has a cause &rarr; First Cause), Teleological (design implies designer). Also pantheism (Nature is God), the Absolute, and immortality of the soul.</p>
+
+<p><strong>Aesthetics:</strong> Philosophy of art. Appreciation of beauty in natural and artistic creations. Does art have a validity of its own?</p>
+
+<div class="exam-tip">&#9888; Section 1.3 (Relation between philosophy, science, and religion) is EXCLUDED from the midsem.</div>
+
+</section>
+
+<!-- ==================== MODULE 2 ==================== -->
+<section class="module m2" id="m2">
+<div class="module-header">Module 2: Greek Philosophy</div>
+
+<h3>2.1 Pre-Socratic Thinkers</h3>
+
+<p>The earliest Greek philosophers asked: <strong>What is the basic substance (arche) of everything?</strong></p>
+
+<p><strong>Thales</strong> &mdash; Water is the fundamental substance. First to seek a natural (not mythological) explanation.</p>
+
+<p><strong>Anaximander</strong> &mdash; The basic substance is the <strong>Apeiron</strong> (&ldquo;Boundless/Indefinite&rdquo;). Infinite, eternal, indeterminate. More abstract than Thales.</p>
+
+<p><strong>Anaximenes</strong> &mdash; Air is fundamental. Rarefaction produces fire; condensation produces wind, clouds, water, earth, stone.</p>
+
+<p><strong>Heraclitus</strong> &mdash; Fire is the element. <strong>&ldquo;Everything flows&rdquo;</strong> (panta rhei). &ldquo;You cannot step into the same river twice.&rdquo; BUT there is <strong>Logos</strong> (reason/law) governing all change. Opposites are necessary and unified. Conflict is the father of all things.</p>
+
+<p><strong>Parmenides</strong> &mdash; Opposed Heraclitus. Being IS. Non-being is NOT. <strong>Change is impossible and illusory.</strong> Reality is one, unchanging, eternal, indivisible. Senses deceive; only rational thought grasps truth.</p>
+
+<p><strong>Democritus</strong> &mdash; <strong>Atomism:</strong> Reality = atoms (indivisible particles) + void (empty space). All change = atoms rearranging. Purely mechanical, no purpose. Anticipates modern materialism.</p>
+
+<p><strong>Pythagoras</strong> &mdash; Numbers are the essence of all things. Mathematical relationships underlie reality. Soul is immortal (transmigration).</p>
+
+<h3>2.1 (cont.) Socrates</h3>
+
+<p>Shifted focus from cosmology to <strong>ethics and human life</strong> &mdash; &ldquo;Know thyself.&rdquo;</p>
+
+<div class="key-concept">
+  <p><strong>The Socratic Method (Dialectic/Elenchus):</strong> Conversational questioning to expose contradictions and reach universal definitions. Socrates claimed to know nothing (&ldquo;I know that I know nothing&rdquo;) &mdash; he was a midwife helping others give birth to knowledge.</p>
+</div>
+
+<ul>
+  <li><strong>Knowledge = Virtue.</strong> If you truly know what is good, you will do it. Wrongdoing comes from ignorance.</li>
+  <li>Sought universal definitions: What IS justice? Courage? Piety?</li>
+  <li>&ldquo;The unexamined life is not worth living.&rdquo;</li>
+  <li>Executed (hemlock) for &ldquo;corrupting the youth&rdquo; and &ldquo;impiety&rdquo; &mdash; chose death over abandoning philosophy.</li>
+</ul>
+
+<h3>2.2 Plato on Knowledge and Ideas/Forms</h3>
+
+<h4>The Theory of Ideas (Forms)</h4>
+
+<p>Plato divides reality into <strong>two worlds:</strong></p>
+
+<ol>
+  <li><strong>The World of Ideas/Forms</strong> &mdash; eternal, unchanging, perfect, immaterial. The TRUE reality. Known only through reason.</li>
+  <li><strong>The World of Appearances</strong> &mdash; physical, changing, imperfect copies. Known through sensation (unreliable).</li>
+</ol>
+
+<p>Physical objects &ldquo;participate&rdquo; in or are &ldquo;copies&rdquo; of their Forms. The <strong>Form of the Good</strong> is the highest &mdash; it illuminates all others, like the sun illuminates the physical world.</p>
+
+<h4>The Allegory of the Cave</h4>
+
+<p>Prisoners chained in a cave, facing a wall. Fire behind them casts shadows on the wall &mdash; they think shadows ARE reality. One prisoner is freed, sees real objects, then the sun (Form of the Good). Returns to tell others but they think he&rsquo;s crazy.</p>
+
+<div class="definition">
+  <p><strong>Meaning:</strong> Cave = world of senses. Shadows = appearances. Sun = Form of the Good. Freed prisoner = the philosopher. Philosophy = journey from darkness (ignorance) to light (knowledge).</p>
+</div>
+
+<h4>The Divided Line (Epistemology)</h4>
+
+<p><strong>DOXA (Opinion)</strong> &mdash; about the physical world:</p>
+<ol>
+  <li><strong>Eikasia</strong> &mdash; imagination, illusions, shadows (lowest)</li>
+  <li><strong>Pistis</strong> &mdash; belief about physical objects</li>
+</ol>
+
+<p><strong>EPISTEME (True Knowledge)</strong> &mdash; about the Forms:</p>
+<ol start="3">
+  <li><strong>Dianoia</strong> &mdash; mathematical/rational thinking, uses hypotheses</li>
+  <li><strong>Noesis</strong> &mdash; direct apprehension of Forms through dialectic (highest)</li>
+</ol>
+
+<h4>Knowledge as Reminiscence (Anamnesis)</h4>
+
+<div class="key-concept">
+  <p>Before entering the body, the soul existed in the world of Forms and knew them directly. Upon entering, it forgets. Sensations don&rsquo;t produce knowledge &mdash; they <strong>trigger remembering</strong>.</p>
+  <p><strong>All knowledge is reminiscence. All learning is reawakening.</strong></p>
+  <p>This proves the prior existence and immortality of the soul.</p>
+</div>
+
+<p>The union with the body is a <strong>hindrance</strong> to the soul&rsquo;s intellectual aspirations. The soul is rational, but when it enters the body, a mortal, irrational part is added.</p>
+
+<h3>2.3 Plato on Self, Virtues and Society</h3>
+
+<h4>Three Parts of the Soul</h4>
+
+<ol>
+  <li><strong>Rational Part (Reason)</strong> &mdash; intellectual faculty, capable of knowing the highest good. Includes gentleness, humility, reverence. Must rule.</li>
+  <li><strong>Spirited Part (Will/Spirit)</strong> &mdash; executive faculty. Anger, ambition, resentment. Ally of reason against appetites.</li>
+  <li><strong>Appetitive Part (Desire)</strong> &mdash; desires for wealth, pleasure, bodily satisfactions. Must be controlled.</li>
+</ol>
+
+<h4>The Four Cardinal Virtues</h4>
+
+<table>
+  <thead><tr><th>Virtue</th><th>When?</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Wisdom</strong></td><td>The rational part rules properly</td></tr>
+    <tr><td><strong>Courage</strong></td><td>The spirited part holds fast to reason&rsquo;s instructions about what to fear</td></tr>
+    <tr><td><strong>Temperance</strong></td><td>Harmony; appetites are controlled by reason</td></tr>
+    <tr><td><strong>Justice</strong></td><td>Each part doing its own work properly</td></tr>
+  </tbody>
+</table>
+
+<p>The ethical ideal is a <strong>well-ordered soul</strong>. A life of reason/virtue is the highest good. The just man is the happy man.</p>
+
+<h4>The State (mirrors the soul)</h4>
+
+<table>
+  <thead><tr><th>Class</th><th>Soul Element</th><th>Function</th><th>Virtue</th></tr></thead>
+  <tbody>
+    <tr><td>Philosopher-Kings</td><td>Rational</td><td>Governance</td><td>Wisdom</td></tr>
+    <tr><td>Warriors/Guardians</td><td>Spirited</td><td>Defense</td><td>Courage</td></tr>
+    <tr><td>Artisans/Merchants/Farmers</td><td>Appetitive</td><td>Production</td><td>Temperance</td></tr>
+  </tbody>
+</table>
+
+<p><strong>Justice in the state</strong> = each class doing its own work. The state is an educational institution; its foundation must be in philosophy. If all men were rational and virtuous, there would be no need for the state.</p>
+
+<h3>2.4 Aristotle&rsquo;s Criticisms of Plato + Aristotle&rsquo;s Metaphysics</h3>
+
+<h4>Problems with Plato&rsquo;s Theory of Ideas</h4>
+
+<div class="criticism">
+  <p><strong>1.</strong> Unjustified separation of eternal ideas from the actual world of experience.</p>
+  <p><strong>2.</strong> Degrades the physical world as mere &ldquo;appearance.&rdquo;</p>
+  <p><strong>3.</strong> &ldquo;Copies&rdquo; and &ldquo;participation&rdquo; don&rsquo;t explain anything &mdash; saying individual man &ldquo;participates&rdquo; in ideal man adds nothing.</p>
+  <p><strong>4. Third Man Argument:</strong> If an individual man resembles the Form of Man, we need a THIRD &ldquo;man&rdquo; to explain what they share &rarr; infinite regress.</p>
+  <p><strong>5.</strong> Forms are static/changeless &mdash; can&rsquo;t explain change and motion. Change requires both being AND becoming.</p>
+</div>
+
+<h4>Substance (Hylomorphism): Form + Matter are Indivisible</h4>
+
+<p>You cannot separate the essence of a thing from its material. The idea of gold can&rsquo;t be understood apart from its properties (yellowish, shiny, malleable). Even raw matter has some form. Aristotle&rsquo;s position is <strong>pluralistic</strong> &mdash; reality = many individual substances.</p>
+
+<h4>Potentiality and Actuality</h4>
+
+<div class="key-concept">
+  <p>Matter has <strong>potentiality</strong> to become something. A seed is a potential tree; the tree is an actualized seed. Each stage is a form realized. Matter and form are relative &mdash; an acorn is a potential tree, the tree is an actualized acorn.</p>
+</div>
+
+<h4>Teleology and God</h4>
+
+<p>The world is <strong>purposive, not mechanical</strong>. &ldquo;Nature does not create anything in vain.&rdquo;</p>
+
+<p>God = highest form/actuality, no potentiality = <strong>Actus Purus</strong> (Pure Act) = <strong>Prime Mover</strong> (Unmoved Mover). Remains outside the world-process, supplies motion by attraction (as an object of love/desire). World is imperfect because <strong>matter is incapable of fully achieving its purpose</strong>.</p>
+
+<h4>The Four Causes</h4>
+
+<table>
+  <thead><tr><th>Cause</th><th>Question</th><th>Example (Making a Pot)</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Material</strong></td><td>What is it made of?</td><td>Clay</td></tr>
+    <tr><td><strong>Formal</strong></td><td>What is it? (design/essence)</td><td>The concept/design of the pot</td></tr>
+    <tr><td><strong>Efficient</strong></td><td>By what is it made?</td><td>The potter</td></tr>
+    <tr><td><strong>Final</strong></td><td>For what purpose?</td><td>To store/cool water</td></tr>
+  </tbody>
+</table>
+
+<p>All four operate simultaneously. The <strong>final cause</strong> (purpose) is the most important &mdash; it explains WHY something exists.</p>
+
+</section>
+
+<!-- ==================== MODULE 3 ==================== -->
+<section class="module m3" id="m3">
+<div class="module-header">Module 3: Continental Rationalism</div>
+
+<h3>3.1 What is Rationalism?</h3>
+
+<p>Rationalism holds that <strong>reason</strong> (not sense experience) is the primary source of knowledge. The model is mathematics &mdash; starting from self-evident axioms and deducing necessary truths with certainty. Key figures: Descartes, Spinoza, Leibniz.</p>
+
+<h3>3.2&ndash;3.4 Ren&eacute; Descartes (1596&ndash;1650)</h3>
+
+<h4>The Method of Doubt</h4>
+
+<p>Descartes wants to find ONE absolutely certain truth. His method: doubt everything that can possibly be doubted.</p>
+
+<ol>
+  <li><strong>Doubt the senses:</strong> Senses sometimes deceive (optical illusions). If they deceive sometimes, maybe always.</li>
+  <li><strong>The dream argument:</strong> Dreams feel real. Can never be certain you&rsquo;re not dreaming right now.</li>
+  <li><strong>The evil demon (malin g&eacute;nie):</strong> Perhaps an all-powerful evil demon is deceiving you about everything &mdash; even mathematics.</li>
+</ol>
+
+<div class="key-concept">
+  <p><strong>&ldquo;Cogito ergo sum&rdquo; &mdash; &ldquo;I think, therefore I am.&rdquo;</strong></p>
+  <p>Even if the demon deceives me about everything, he cannot deceive me about the fact that I&rsquo;m being deceived. If I doubt, I think. If I think, I exist. The self as a thinking thing is the one indubitable truth.</p>
+</div>
+
+<p><strong>Criterion of knowledge:</strong> Whatever is perceived <strong>clearly and distinctly</strong> must be true.</p>
+
+<h4>Substance, Attributes, and Modes</h4>
+
+<table>
+  <thead><tr><th>Substance</th><th>Attribute (Essential Property)</th><th>Modes (Variations)</th></tr></thead>
+  <tbody>
+    <tr><td><strong>God</strong></td><td>Substance in the absolute sense</td><td>&mdash;</td></tr>
+    <tr><td><strong>Mind</strong> (Res Cogitans)</td><td>Thought</td><td>Imagination, will, perception</td></tr>
+    <tr><td><strong>Body</strong> (Res Extensa)</td><td>Extension</td><td>Figure, motion</td></tr>
+  </tbody>
+</table>
+
+<p>Mind and body are <strong>distinct</strong> &mdash; their attributes are completely different. Body is extended but passive; mind is active and free. Mind has no extension; no body can think. We CAN conceive extension without figure, and thought without imagination &mdash; so extension and thought are the essential attributes.</p>
+
+<h4>Mind-Body Dualism</h4>
+
+<p>Nature is left free for <strong>mechanical explanations</strong>. The human body is a machine. Heat in heart is the moving principle; muscles are organs of motion; nerves are organs of sensation.</p>
+
+<div class="criticism">
+  <p><strong>The Interaction Problem:</strong> If mind and body exclude each other completely, how can they interact? Mind cannot cause change in body; body cannot cause change in mind. Yet hunger, thirst, emotions, pain all involve BOTH.</p>
+  <p>&ldquo;If I were just a thinking being without a body, I would probably <em>know</em> that I am hungry but not <em>feel</em> that I am hungry.&rdquo;</p>
+</div>
+
+<h4>Descartes&rsquo; Solution: The Pineal Gland</h4>
+
+<p>Movements in &ldquo;animal spirits&rdquo; (fine particles in blood) are caused by objects &rarr; transferred to the <strong>pineal gland</strong> &rarr; sensations. Soul can also move the gland &rarr; motion to animal spirits &rarr; through nerves into muscles &rarr; bodily movement.</p>
+
+<p><strong>But this fails:</strong> He never explains HOW an unextended mind pushes a physical gland. The same dualism problem reappears at the pineal gland.</p>
+
+<h3>Spinoza (1632&ndash;1677)</h3>
+
+<h4>Critique of Descartes</h4>
+
+<p>&ldquo;Dependent substance&rdquo; is a contradiction. If substance exists in itself, then mind and body CANNOT be substances &mdash; they depend on God.</p>
+
+<div class="key-concept">
+  <p><strong>Spinoza&rsquo;s Monism:</strong> God is the ONLY substance. Thought and extension are <strong>attributes</strong> of the one God. God = Nature (<em>Deus sive Natura</em>). This is <strong>pantheism</strong>.</p>
+  <p>Dualism of substance disappears. Dualism of attributes remains.</p>
+</div>
+
+<h4>Parallelism (vs Interaction)</h4>
+
+<p>Since thought and extension are attributes of ONE substance, there is <strong>no interaction</strong> between them. They run in <strong>parallel</strong>. Every mental event has a corresponding physical event, and vice versa. They correspond but do not cause each other &mdash; like two clocks synchronized but not connected.</p>
+
+<h4>Descartes vs Spinoza</h4>
+
+<table>
+  <thead><tr><th></th><th>Descartes</th><th>Spinoza</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Substances</strong></td><td>Three: God, Mind, Body</td><td>One: God/Nature</td></tr>
+    <tr><td><strong>Mind &amp; Body</strong></td><td>Separate substances</td><td>Attributes of one substance</td></tr>
+    <tr><td><strong>Relationship</strong></td><td>Interaction (pineal gland)</td><td>Parallelism (no interaction)</td></tr>
+    <tr><td><strong>God</strong></td><td>Creator, separate from creation</td><td>God IS Nature (pantheism)</td></tr>
+    <tr><td><strong>Problem solved?</strong></td><td>No &mdash; can&rsquo;t explain interaction</td><td>Avoids the problem entirely</td></tr>
+  </tbody>
+</table>
+
+</section>
+
+<!-- ==================== MODULE 4 ==================== -->
+<section class="module m4" id="m4">
+<div class="module-header">Module 4: British Empiricism</div>
+
+<h3>4.1 Introduction + John Locke (1632&ndash;1704)</h3>
+
+<p>Empiricism: All knowledge comes from <strong>experience</strong>, not innate reason. The senses are primary. Key figures: Locke, Berkeley, Hume &mdash; each more radical than the last.</p>
+
+<h4>Tabula Rasa (Blank Slate)</h4>
+
+<p>No innate ideas. Mind at birth is a &ldquo;white paper, void of all characters.&rdquo; Two sources of experience:</p>
+<ol>
+  <li><strong>Sensation</strong> &mdash; external (five senses: color, sound, heat, etc.)</li>
+  <li><strong>Reflection</strong> &mdash; internal (mind observing its own operations: thinking, doubting, willing)</li>
+</ol>
+
+<p>Simple ideas come directly from sensation or reflection. Complex ideas are formed by combining, comparing, or abstracting simple ideas.</p>
+
+<h4>Primary and Secondary Qualities</h4>
+
+<table>
+  <thead><tr><th>Primary Qualities</th><th>Secondary Qualities</th></tr></thead>
+  <tbody>
+    <tr><td>Actually IN the object, inseparable</td><td>NOT in the object; produced in us</td></tr>
+    <tr><td>Solidity, Extension, Figure, Motion, Number</td><td>Color, Sound, Taste, Smell, Temperature</td></tr>
+    <tr><td>Our ideas RESEMBLE the qualities</td><td>Our ideas do NOT resemble anything in the object</td></tr>
+  </tbody>
+</table>
+
+<p>Locke: We have direct knowledge of our own ideas, demonstrative knowledge of God/morality, and practical knowledge of the external world. The mind can form <strong>abstract ideas</strong> by separating common features from particular instances.</p>
+
+<h3>4.2 Berkeley &mdash; Rejection of Abstract Ideas</h3>
+
+<h4>The Attack on Locke</h4>
+
+<p>If all we know is our ideas (as Locke says), we have <strong>no basis</strong> to claim an external material world exists independent of perception.</p>
+
+<h4>Rejection of Abstract Ideas</h4>
+
+<div class="key-concept">
+  <p><strong>The triangle example:</strong> A general idea of &ldquo;triangle&rdquo; that is &ldquo;neither oblique nor rectangular, equilateral, nor scalenon, but all and none of these at once&rdquo; &mdash; nothing corresponds to this in our thoughts. <strong>Logical inconsistency.</strong></p>
+  <p><strong>The motion example:</strong> We cannot frame the idea of motion distinct from a body moving, which is neither swift nor slow, neither curvilinear nor rectilinear.</p>
+</div>
+
+<p>We cannot see or feel anything without an actual sensation. We cannot conceive any sensible thing distinct from its perception. Even imagination is of concrete qualities.</p>
+
+<h4>Esse est Percipi &mdash; &ldquo;To be is to be perceived&rdquo;</h4>
+
+<div class="definition">
+  <p>&ldquo;When I say the table I write on exists, I mean that I see and feel it. When I am outside the room, I mean if I were inside I might perceive it, or <strong>some other mind does actually perceive it</strong>.&rdquo;</p>
+  <p>Sensations exist only in the mind. Their existence IS their being perceived.</p>
+</div>
+
+<h4>Against Primary/Secondary Distinction</h4>
+
+<p>Even &ldquo;primary&rdquo; qualities (solidity, extension) come from touch and sight &mdash; they&rsquo;re sensations in my mind. I can never perceive extension without color. I cannot abstract secondary qualities away and leave &ldquo;solid extended substance.&rdquo; <strong>All qualities are secondary. Bodies have no existence without the mind.</strong></p>
+
+<p>Berkeley is a <strong>subjective idealist</strong>, not a skeptic. Things are real as ideas in minds. God perceives everything at all times.</p>
+
+<h3>4.3&ndash;4.4 David Hume (1711&ndash;1776)</h3>
+
+<h4>Impressions and Ideas</h4>
+
+<p><strong>Impressions:</strong> Vivid, lively perceptions &mdash; sensations, emotions as they first appear in the soul.</p>
+<p><strong>Ideas:</strong> Faint copies of impressions &mdash; what we recall or reflect on.</p>
+<p>All knowledge = compounding, transposing, diminishing impressions. <strong>If you can&rsquo;t trace an idea to an impression, it&rsquo;s meaningless.</strong></p>
+
+<h4>Association of Ideas</h4>
+
+<ol>
+  <li><strong>Resemblance</strong> &mdash; picture leads to original</li>
+  <li><strong>Contiguity</strong> &mdash; mention of one room suggests adjacent one</li>
+  <li><strong>Cause and Effect</strong> &mdash; wound calls up idea of pain</li>
+</ol>
+
+<h4>Two Kinds of Knowledge</h4>
+
+<table>
+  <thead><tr><th>Relations of Ideas</th><th>Matters of Fact</th></tr></thead>
+  <tbody>
+    <tr><td>Math, geometry, logic</td><td>Everything else</td></tr>
+    <tr><td>Certain, discoverable by thought alone</td><td>Based on experience, only probable</td></tr>
+    <tr><td>Denial involves contradiction</td><td>Denial involves NO contradiction</td></tr>
+    <tr><td>&ldquo;3 &times; 5 = 15&rdquo;</td><td>&ldquo;The sun will rise tomorrow&rdquo;</td></tr>
+  </tbody>
+</table>
+
+<h4>Denial of Causality</h4>
+
+<div class="key-concept">
+  <p>All evidence of matters of fact rests on <strong>cause and effect</strong>. But is there a <strong>necessary connection</strong> between cause and effect?</p>
+</div>
+
+<p><strong>We do NOT reach causal knowledge a priori:</strong> No reasoning alone can discover the explosiveness of gunpowder. The effect is totally different from the cause. Reason alone can&rsquo;t tell us bread nourishes or fire warms.</p>
+
+<p><strong>No necessary connection:</strong> There is no logical contradiction in &ldquo;fire doesn&rsquo;t warm&rdquo; or &ldquo;bread doesn&rsquo;t nourish.&rdquo; Unlike &ldquo;a triangle has 4 sides.&rdquo;</p>
+
+<p><strong>What we actually observe:</strong> Objects <strong>succeed</strong> one another. Heat follows flame. One billiard ball&rsquo;s motion is &ldquo;attended by&rdquo; another&rsquo;s. We NEVER perceive any &ldquo;power,&rdquo; &ldquo;force,&rdquo; or necessary connection. It&rsquo;s entirely concealed.</p>
+
+<div class="definition">
+  <p><strong>Hume&rsquo;s answer:</strong> <strong>Constant conjunction</strong> + <strong>habit/custom</strong> &rarr; belief in connection. The mind, having seen the same sequence many times, EXPECTS it to continue. The &ldquo;necessary connection&rdquo; is just a <strong>feeling in our minds</strong> from repeated experience, not something in objects.</p>
+</div>
+
+<p><strong>Even our own will:</strong> The connection between willing and bodily movement is equally mysterious. We experience the sequence (willing &rarr; movement) but never perceive the mechanism or power.</p>
+
+<h4>Hume&rsquo;s Skepticism</h4>
+
+<p>Metaphysics, theology, and natural sciences <strong>cannot give universal/necessary knowledge</strong>. We only know experiences and reach only probability. Ultimates, substances, causes, soul, external world &mdash; we know nothing of them with certainty.</p>
+
+<div class="exam-tip"><strong>Progression of Empiricism:</strong><br>
+  Locke: ideas + external world + God<br>
+  Berkeley: ideas + God (drops external world)<br>
+  Hume: only impressions and ideas (drops God and substance too)
+</div>
+
+</section>
+
+<!-- ==================== MODULE 5 ==================== -->
+<section class="module m5" id="m5">
+<div class="module-header">Module 5: Ethics &mdash; Hume, Kant, Bentham, Mill</div>
+
+<h3>5.1 Nature and Scope of Ethics + Hume&rsquo;s Ethics</h3>
+
+<p>Ethics = philosophical study of morality. What makes actions right or wrong? What is &ldquo;good&rdquo;? Not about listing rules but understanding foundations of moral judgment.</p>
+
+<h4>Hume on Ethics</h4>
+
+<p><strong>Moral sentiments</strong> &mdash; morality is based on <strong>feeling, not reason</strong>. Reason is and ought to be the &ldquo;slave of the passions.&rdquo; We approve actions that produce pleasure/utility through a moral SENSE. Sympathy shapes moral judgments.</p>
+
+<div class="key-concept">
+  <p><strong>The Is-Ought Problem (Hume&rsquo;s Guillotine):</strong> You cannot derive an &ldquo;ought&rdquo; from an &ldquo;is.&rdquo; Factual statements cannot logically produce value judgments. Just because something IS a certain way doesn&rsquo;t mean it SHOULD be.</p>
+</div>
+
+<h3>5.2 Kant on Duty (Deontological Ethics)</h3>
+
+<p>For Kant, morality is grounded in <strong>REASON</strong>, not feeling. The opposite of Hume.</p>
+
+<h4>The Good Will</h4>
+
+<p>The only thing good <strong>without qualification</strong> is a good will &mdash; the intention to do right BECAUSE it is right. Intelligence, courage, wealth can all be used for evil. Even if a good will accomplishes nothing, it still &ldquo;shines like a jewel.&rdquo; Consequences are irrelevant to moral worth.</p>
+
+<h4>Duty vs Inclination</h4>
+
+<p>An action has moral worth ONLY when done <strong>from duty</strong>, not from inclination or self-interest.</p>
+<ul>
+  <li>Shopkeeper who is honest to keep customers &rarr; self-interest, no moral worth</li>
+  <li>Shopkeeper who is honest because honesty is right &rarr; from duty, morally worthy</li>
+  <li>Helping because you enjoy it &rarr; inclination, no moral worth</li>
+  <li>Helping purely because it&rsquo;s your duty &rarr; morally worthy</li>
+</ul>
+
+<h4>The Categorical Imperative (3 Formulations)</h4>
+
+<div class="key-concept">
+  <p><strong>1. Universal Law:</strong> &ldquo;Act only according to that maxim by which you can at the same time will that it should become a <strong>universal law</strong>.&rdquo;</p>
+  <p>Test: What if EVERYONE did this? Lying &rarr; if all lied, trust collapses, lying becomes impossible. Self-defeating &rarr; wrong.</p>
+</div>
+
+<div class="key-concept">
+  <p><strong>2. Humanity as End:</strong> &ldquo;Treat humanity, whether in your own person or that of another, always as an <strong>end</strong> and never merely as a <strong>means</strong>.&rdquo;</p>
+  <p>Every rational being has intrinsic worth (dignity). Slavery, deception, exploitation all violate this.</p>
+</div>
+
+<div class="key-concept">
+  <p><strong>3. Kingdom of Ends:</strong> Act as if legislating for a community where everyone is both ruler and subject.</p>
+</div>
+
+<h4>Criticisms of Kant</h4>
+
+<div class="criticism">
+  <p><strong>1. Too rigid:</strong> Must tell truth even to a murderer asking where your friend is.</p>
+  <p><strong>2. Ignores consequences:</strong> Good-intention action with terrible outcomes is still &ldquo;morally worthy.&rdquo;</p>
+  <p><strong>3. Conflicting duties:</strong> Truth-telling vs protecting the innocent &mdash; no resolution method.</p>
+  <p><strong>4. Multiple maxims:</strong> &ldquo;I will lie&rdquo; vs &ldquo;I will lie to save a life&rdquo; give different results.</p>
+  <p><strong>5. Empty formalism:</strong> Tells HOW to test maxims but gives no specific content.</p>
+  <p><strong>6. Devalues compassion:</strong> Helping from genuine care has no moral worth.</p>
+</div>
+
+<h3>5.3&ndash;5.4 Bentham and Mill&rsquo;s Utilitarianism</h3>
+
+<h4>Jeremy Bentham (1748&ndash;1832)</h4>
+
+<div class="definition">
+  <p><strong>Principle of Utility (Greatest Happiness Principle):</strong> An action is right if it produces the <strong>greatest happiness for the greatest number</strong>. Happiness = pleasure + absence of pain.</p>
+</div>
+
+<p><strong>Psychological hedonism:</strong> Humans naturally seek pleasure and avoid pain (descriptive).<br>
+<strong>Ethical hedonism:</strong> Humans OUGHT to maximize pleasure (normative).</p>
+
+<h4>The Hedonistic Calculus (Felicific Calculus) &mdash; 7 Criteria</h4>
+
+<ol>
+  <li><strong>Intensity</strong> &mdash; How strong?</li>
+  <li><strong>Duration</strong> &mdash; How long?</li>
+  <li><strong>Certainty</strong> &mdash; How probable?</li>
+  <li><strong>Propinquity</strong> &mdash; How soon?</li>
+  <li><strong>Fecundity</strong> &mdash; Will it lead to more pleasure?</li>
+  <li><strong>Purity</strong> &mdash; Is it free from pain?</li>
+  <li><strong>Extent</strong> &mdash; How many people affected?</li>
+</ol>
+
+<p><strong>All pleasures are equal in kind &mdash; only QUANTITY matters.</strong> &ldquo;Pushpin is as good as poetry&rdquo; if it gives equal pleasure.</p>
+
+<div class="criticism">
+  <p><strong>Criticisms of Bentham:</strong></p>
+  <p>1. &ldquo;Pig philosophy&rdquo; &mdash; reduces ethics to animal satisfaction.</p>
+  <p>2. Calculus is impractical &mdash; can&rsquo;t measure pleasure in numbers.</p>
+  <p>3. Tyranny of majority &mdash; could justify torturing one if millions enjoy it.</p>
+  <p>4. Ignores justice and motives entirely.</p>
+</div>
+
+<h4>John Stuart Mill (1806&ndash;1873)</h4>
+
+<div class="key-concept">
+  <p><strong>Higher and Lower Pleasures:</strong> Pleasures differ in QUALITY, not just quantity.</p>
+  <p><strong>&ldquo;It is better to be Socrates dissatisfied than a fool satisfied.&rdquo;</strong></p>
+  <p>Intellectual pleasures (philosophy, literature, art) are qualitatively SUPERIOR to bodily pleasures (eating, physical comfort).</p>
+</div>
+
+<p><strong>Competent Judges:</strong> Who decides which pleasures are higher? Those who have experienced BOTH kinds. They would unanimously prefer intellectual pleasures.</p>
+
+<p><strong>Rule Utilitarianism:</strong> Follow RULES that generally maximize happiness (don&rsquo;t recalculate every time). &ldquo;Don&rsquo;t lie&rdquo; is good because lying generally causes more unhappiness.</p>
+
+<p><strong>Harm Principle:</strong> Liberty can only be restricted to prevent harm to others &mdash; never for your own good.</p>
+
+<p><strong>Justice = highest utility.</strong> Rules of justice are the rules whose observance produces the most long-term happiness.</p>
+
+<h4>Bentham vs Mill</h4>
+
+<table>
+  <thead><tr><th></th><th>Bentham</th><th>Mill</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Pleasure</strong></td><td>Quantitative only</td><td>Qualitative + quantitative</td></tr>
+    <tr><td><strong>Key quote</strong></td><td>&ldquo;Pushpin = poetry&rdquo;</td><td>&ldquo;Better Socrates dissatisfied than a fool satisfied&rdquo;</td></tr>
+    <tr><td><strong>Who judges?</strong></td><td>Felicific calculus (7 criteria)</td><td>Competent judges</td></tr>
+    <tr><td><strong>Type</strong></td><td>Act utilitarianism</td><td>Rule utilitarianism</td></tr>
+    <tr><td><strong>View of humans</strong></td><td>Same as animals in pleasure terms</td><td>Higher faculties distinguish us</td></tr>
+    <tr><td><strong>Liberty</strong></td><td>Less emphasis</td><td>Central (Harm Principle)</td></tr>
+    <tr><td><strong>Criticism</strong></td><td>&ldquo;Pig philosophy&rdquo;</td><td>Elitist? Who decides &ldquo;higher&rdquo;?</td></tr>
+  </tbody>
+</table>
+
+<h4>Kant vs Utilitarians</h4>
+
+<table>
+  <thead><tr><th></th><th>Kant</th><th>Bentham/Mill</th></tr></thead>
+  <tbody>
+    <tr><td><strong>What makes action right?</strong></td><td>Duty / intention</td><td>Consequences / happiness</td></tr>
+    <tr><td><strong>Consequences matter?</strong></td><td>No</td><td>Yes &mdash; the ONLY thing</td></tr>
+    <tr><td><strong>Moral standard</strong></td><td>Categorical imperative</td><td>Greatest happiness principle</td></tr>
+    <tr><td><strong>Exceptions?</strong></td><td>Never</td><td>Yes, for greater happiness</td></tr>
+    <tr><td><strong>Persons</strong></td><td>Always ends, never merely means</td><td>Can sacrifice one for many</td></tr>
+  </tbody>
+</table>
+
+</section>
+
+<!-- ==================== MODULE 6 ==================== -->
+<section class="module m6" id="m6">
+<div class="module-header">Module 6: Existentialism</div>
+
+<h3>6.1&ndash;6.3 Core Ideas &amp; Key Thinkers</h3>
+
+<h4>What is Existentialism?</h4>
+
+<p>A philosophy that starts with the <strong>individual&rsquo;s concrete existence</strong>, not abstract systems. Rejects the idea that human nature is fixed or predetermined. Emphasizes freedom, choice, anxiety, authenticity, absurdity.</p>
+
+<div class="key-concept">
+  <p><strong>&ldquo;Existence precedes essence&rdquo;</strong> (Sartre) &mdash; You exist first, then define yourself through choices. There is no pre-given &ldquo;human nature.&rdquo;</p>
+</div>
+
+<h3>S&oslash;ren Kierkegaard (1813&ndash;1855) &mdash; Father of Existentialism</h3>
+
+<p>Reacted against Hegel&rsquo;s abstract rational system. Philosophy must begin with the <strong>existing individual</strong>. &ldquo;The individual is higher than the system.&rdquo;</p>
+
+<h4>Three Stages of Existence</h4>
+
+<table>
+  <thead><tr><th>Stage</th><th>Mode of Living</th><th>Model</th><th>Outcome</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Aesthetic</strong></td><td>Living for pleasure, sensation, novelty, the moment</td><td>Don Juan</td><td>Boredom, emptiness, DESPAIR</td></tr>
+    <tr><td><strong>Ethical</strong></td><td>Duty, moral commitment, responsibility, consistency</td><td>The married person</td><td>Can become rigid; can&rsquo;t address deepest questions</td></tr>
+    <tr><td><strong>Religious</strong></td><td>Personal, passionate relationship with God; beyond ethics</td><td>Abraham (sacrifice of Isaac)</td><td>&ldquo;Teleological suspension of the ethical&rdquo;</td></tr>
+  </tbody>
+</table>
+
+<p>Each transition requires a <strong>leap</strong> &mdash; not rational progression but a decisive, passionate choice. You cannot reason your way between stages.</p>
+
+<h4>Key Concepts</h4>
+
+<p><strong>Anxiety (Angst):</strong> Not fear of something specific but deep unease accompanying freedom. We are anxious BECAUSE we are free. &ldquo;The dizziness of freedom.&rdquo;</p>
+
+<p><strong>Despair:</strong> Failure to be one&rsquo;s authentic self. &ldquo;The sickness unto death.&rdquo;</p>
+
+<p><strong>Subjectivity is Truth:</strong> Truth must be lived and personally appropriated. Not WHAT you believe but HOW &mdash; with passion and commitment.</p>
+
+<p><strong>The crowd is untruth:</strong> The public dulls individual existence. People hide behind collective opinions to avoid making their own choices.</p>
+
+<h3>Martin Heidegger (1889&ndash;1976)</h3>
+
+<p>Central question: What is the meaning of <strong>Being</strong> (Sein)?</p>
+
+<p><strong>Dasein</strong> = &ldquo;being-there&rdquo; &mdash; human existence. We are the beings who ASK about Being. We don&rsquo;t just exist &mdash; we CARE about our existence.</p>
+
+<p><strong>Thrownness (Geworfenheit):</strong> We didn&rsquo;t choose to be born, our culture, era, or family. We are &ldquo;thrown&rdquo; into existence and must make something of it.</p>
+
+<p><strong>Being-in-the-world:</strong> We are not isolated subjects observing objects (as Descartes thought). We are always already engaged with the world.</p>
+
+<h4>Authenticity vs Inauthenticity</h4>
+
+<div class="definition">
+  <p><strong>Inauthentic: Das Man (the &ldquo;They&rdquo;)</strong> &mdash; Living as &ldquo;one&rdquo; does. Doing what people do, thinking what people think. Conformity, surrendering to public opinion. This is the DEFAULT mode.</p>
+  <p><strong>Authentic:</strong> Owning your existence. Making decisions based on your own understanding. Confronting mortality.</p>
+</div>
+
+<h4>Being-toward-Death</h4>
+
+<div class="key-concept">
+  <p>Death is our <strong>ownmost</strong> (no one can die for me), <strong>non-relational</strong> (isolates me from all), <strong>certain</strong> (I will die), and <strong>indefinite</strong> (I don&rsquo;t know when) possibility.</p>
+  <p>In everyday life we cover this up: &ldquo;One dies&rdquo; &mdash; but not me, not now. <strong>Authentically facing mortality</strong> frees us from the tyranny of Das Man.</p>
+</div>
+
+<p><strong>Anxiety (Angst):</strong> Has no specific object. Reveals the nothingness underlying existence. Strips away everyday familiarity. Gateway to authenticity.</p>
+
+<h3>Jean-Paul Sartre (1905&ndash;1980)</h3>
+
+<p>Atheistic existentialism. No God, no predetermined human nature, no cosmic purpose.</p>
+
+<h4>Existence Precedes Essence</h4>
+
+<p>A paper knife has essence before existence (designed before made). Humans are the reverse: <strong>we exist first, then create our essence through choices</strong>. No God to conceive &ldquo;human nature&rdquo; in advance.</p>
+
+<p><strong>&ldquo;Man is nothing else but what he makes of himself.&rdquo;</strong></p>
+
+<h4>Radical Freedom</h4>
+
+<div class="key-concept">
+  <p><strong>&ldquo;We are condemned to be free.&rdquo;</strong> We didn&rsquo;t choose to exist, but we are absolutely free and absolutely responsible for everything we do. No excuses &mdash; no determinism, no &ldquo;human nature,&rdquo; no God&rsquo;s plan. Even NOT choosing is a choice.</p>
+</div>
+
+<h4>Bad Faith (Mauvaise Foi)</h4>
+
+<p>Pretending you are not free. Denying your freedom. Deceiving yourself.</p>
+<ul>
+  <li>&ldquo;I had no choice&rdquo; &mdash; you always have a choice</li>
+  <li>&ldquo;That&rsquo;s just who I am&rdquo; &mdash; you are always becoming</li>
+  <li>&ldquo;I was just following orders&rdquo; &mdash; you chose to follow</li>
+  <li>The waiter who plays at being a waiter too perfectly &mdash; performing a role as if it were fixed nature</li>
+</ul>
+<p><strong>Bad faith is the fundamental ethical failure.</strong></p>
+
+<h4>Anguish, Forlornness, Despair</h4>
+
+<p><strong>Anguish:</strong> Realizing you are totally free and responsible &mdash; not just for yourself, but your choices set an example for all humanity.</p>
+
+<p><strong>Forlornness:</strong> God doesn&rsquo;t exist &rarr; no predetermined moral order, no objective values, no cosmic purpose. We are alone, without excuses. We must create our own values.</p>
+
+<p><strong>Despair:</strong> We must act without hope of certainty. We can only control our own choices.</p>
+
+<h4>Being-in-itself vs Being-for-itself</h4>
+
+<table>
+  <thead><tr><th>Being-in-itself (en-soi)</th><th>Being-for-itself (pour-soi)</th></tr></thead>
+  <tbody>
+    <tr><td>Mode of being of THINGS (rocks, tables)</td><td>Mode of being of CONSCIOUSNESS (humans)</td></tr>
+    <tr><td>Simply IS. No freedom, no possibility.</td><td>Always aware, free, becoming.</td></tr>
+    <tr><td>Complete, solid, self-identical.</td><td>Defined by what it is NOT. Contains nothingness.</td></tr>
+  </tbody>
+</table>
+
+<h3>6.4 The Ethical Self in Existentialism</h3>
+
+<p><strong>No pre-given moral rules.</strong> Unlike Kant or utilitarians, existentialism provides no ready-made ethical system.</p>
+
+<p><strong>Choice creates values.</strong> Values don&rsquo;t exist before choices &mdash; our choices CREATE values. No external moral authority.</p>
+
+<div class="key-concept">
+  <p><strong>Total responsibility:</strong> &ldquo;Man is condemned to be free... we are left alone, without excuse.&rdquo; When you choose for yourself, you choose for all humanity.</p>
+  <p>You cannot blame God, nature, society, upbringing, or emotions.</p>
+</div>
+
+<p><strong>Authenticity = the highest ethical value.</strong> Own your freedom. Make genuine choices. Accept responsibility. Face anxiety and mortality. Create your own meaning.</p>
+
+<p><strong>Bad faith = the fundamental moral failure.</strong> Refusing to be free, denying what you truly are.</p>
+
+<p><strong>Ethics of engagement and commitment:</strong> Not about detachment but ACTION. You must commit, choose, act. &ldquo;Not to choose is, in fact, to choose not to choose.&rdquo;</p>
+
+<h4>All Ethical Approaches Compared</h4>
+
+<table>
+  <thead><tr><th>Approach</th><th>What makes action right?</th><th>Key figure</th></tr></thead>
+  <tbody>
+    <tr><td>Virtue Ethics</td><td>Character / excellence of the soul</td><td>Plato, Aristotle</td></tr>
+    <tr><td>Deontological</td><td>Duty and intention</td><td>Kant</td></tr>
+    <tr><td>Utilitarian</td><td>Consequences (happiness)</td><td>Bentham, Mill</td></tr>
+    <tr><td>Existentialist</td><td>Authentic, free, responsible choice</td><td>Kierkegaard, Sartre</td></tr>
+  </tbody>
+</table>
+
+</section>
+
+<!-- ==================== COMPARISONS ==================== -->
+<section class="comparison-section" id="comparisons">
+<div class="module-header">Key Comparisons</div>
+
+<h3>Plato vs Aristotle</h3>
+<table>
+  <thead><tr><th></th><th>Plato</th><th>Aristotle</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Reality</strong></td><td>World of Forms (abstract, separate)</td><td>Individual substances (form + matter, inseparable)</td></tr>
+    <tr><td><strong>Forms</strong></td><td>Exist independently, eternally</td><td>Cannot exist apart from matter</td></tr>
+    <tr><td><strong>Physical world</strong></td><td>Mere appearance / copy</td><td>Real, worthy of study</td></tr>
+    <tr><td><strong>Change</strong></td><td>Poorly explained (Forms are static)</td><td>Potentiality &rarr; Actuality</td></tr>
+    <tr><td><strong>Knowledge</strong></td><td>Reminiscence (soul remembers)</td><td>Abstraction from experience</td></tr>
+    <tr><td><strong>God</strong></td><td>The Form of the Good</td><td>Unmoved Mover / Actus Purus</td></tr>
+  </tbody>
+</table>
+
+<h3>Descartes vs Spinoza</h3>
+<table>
+  <thead><tr><th></th><th>Descartes</th><th>Spinoza</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Substances</strong></td><td>Three: God, Mind, Body</td><td>One: God/Nature</td></tr>
+    <tr><td><strong>Mind-Body</strong></td><td>Interaction (pineal gland)</td><td>Parallelism (no interaction)</td></tr>
+    <tr><td><strong>God</strong></td><td>Creator, separate from creation</td><td>God IS Nature (pantheism)</td></tr>
+    <tr><td><strong>Dualism</strong></td><td>Substance dualism</td><td>Attribute dualism only</td></tr>
+  </tbody>
+</table>
+
+<h3>Berkeley vs Hume</h3>
+<table>
+  <thead><tr><th></th><th>Berkeley</th><th>Hume</th></tr></thead>
+  <tbody>
+    <tr><td><strong>What exists?</strong></td><td>Minds + ideas + God</td><td>Only impressions and ideas</td></tr>
+    <tr><td><strong>External world</strong></td><td>Doesn&rsquo;t exist (esse est percipi)</td><td>Can&rsquo;t be known</td></tr>
+    <tr><td><strong>God</strong></td><td>Exists &mdash; perceives everything</td><td>Cannot be proven</td></tr>
+    <tr><td><strong>Substance</strong></td><td>Spiritual substance exists (minds)</td><td>No substance can be known</td></tr>
+    <tr><td><strong>Key move</strong></td><td>Rejects abstract ideas</td><td>Denies causality</td></tr>
+    <tr><td><strong>Position</strong></td><td>Subjective Idealist</td><td>Skeptic</td></tr>
+  </tbody>
+</table>
+
+<h3>Bentham vs Mill</h3>
+<table>
+  <thead><tr><th></th><th>Bentham</th><th>Mill</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Pleasure</strong></td><td>Quantitative only</td><td>Qualitative + quantitative</td></tr>
+    <tr><td><strong>Key quote</strong></td><td>&ldquo;Pushpin = poetry&rdquo;</td><td>&ldquo;Better Socrates dissatisfied&rdquo;</td></tr>
+    <tr><td><strong>Who judges?</strong></td><td>Felicific calculus</td><td>Competent judges</td></tr>
+    <tr><td><strong>Type</strong></td><td>Act utilitarianism</td><td>Rule utilitarianism</td></tr>
+    <tr><td><strong>Criticism</strong></td><td>&ldquo;Pig philosophy&rdquo;</td><td>Elitist?</td></tr>
+  </tbody>
+</table>
+
+</section>
+
+<!-- ==================== PREDICTIONS ==================== -->
+<section class="predictions" id="predictions">
+<div class="module-header">Predicted Exam Questions</div>
+
+<p style="margin: 1rem 0; color: var(--muted); font-family: 'Inter', sans-serif; font-size: 0.9rem;">Based on Sem1 2022 (4 &times; 15 marks = 60) and Sem2 2023 (9+7+7+7 = 30 marks). Expect 4 compulsory essay questions.</p>
+
+<div class="question-card">
+  <div class="q-label">Very Likely &mdash; Greek</div>
+  <div class="q-text">Critically discuss Plato&rsquo;s theory of Ideas/Forms and his views on the state/justice.</div>
+</div>
+
+<div class="question-card">
+  <div class="q-label">Very Likely &mdash; Greek</div>
+  <div class="q-text">Discuss Aristotle&rsquo;s form-matter and actuality-potentiality relations. Examine his objections against Plato.</div>
+</div>
+
+<div class="question-card">
+  <div class="q-label">Very Likely &mdash; Rationalism</div>
+  <div class="q-text">Discuss and analyze Descartes&rsquo; views on the method and criterion of knowledge.</div>
+</div>
+
+<div class="question-card">
+  <div class="q-label">Very Likely &mdash; Rationalism</div>
+  <div class="q-text">Critically examine Descartes and Spinoza on the mind-body dualism problem.</div>
+</div>
+
+<div class="question-card">
+  <div class="q-label">Very Likely &mdash; Empiricism</div>
+  <div class="q-text">Discuss Berkeley&rsquo;s rejection of abstract ideas and Hume&rsquo;s rejection of certainty in factual matters / causality.</div>
+</div>
+
+<div class="question-card">
+  <div class="q-label">Very Likely &mdash; Empiricism</div>
+  <div class="q-text">Discuss the distinction between primary and secondary qualities and analyze Berkeley&rsquo;s views on knowledge.</div>
+</div>
+
+<div class="question-card">
+  <div class="q-label">Very Likely &mdash; Ethics</div>
+  <div class="q-text">Critically evaluate Kant&rsquo;s categorical imperatives and Bentham&rsquo;s Hedonistic Calculus as ways of ethical decision-making.</div>
+</div>
+
+<div class="question-card">
+  <div class="q-label">Very Likely &mdash; Ethics</div>
+  <div class="q-text">Bring out a comparative account of Bentham and Mill&rsquo;s utilitarian ethics.</div>
+</div>
+
+<div class="question-card">
+  <div class="q-label">Likely &mdash; Existentialism (New topic)</div>
+  <div class="q-text">Discuss the existentialist conception of freedom and authenticity in Kierkegaard and Sartre.</div>
+</div>
+
+<div class="question-card">
+  <div class="q-label">Likely &mdash; Existentialism (New topic)</div>
+  <div class="q-text">Discuss the problems of existence in Kierkegaard, Heidegger, and Sartre. What is the idea of the ethical self?</div>
+</div>
+
+</section>
+
+</div><!-- end content -->
+
+</body>
+</html>
